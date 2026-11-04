@@ -1,14 +1,31 @@
 /* Stile iniziale: tipografia, colori e variabili CSS sono già predisposti.
    Lavoreremo su collegamenti, CSS condiviso e disposizione delle schede. */
 
+/* Caratteri ospitati nella cartella del sito (nessun servizio esterno). */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("assets/fonts/atkinson-hyperlegible-next.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  src: url("assets/fonts/unbounded-700.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Scelte comuni: ogni regola usa var() per richiamarne il valore. */
 :root {
-  --colore-primario: #245c49;
-  --colore-primario-scuro: #173f32;
+  --colore-primario: #db0707;
+  --colore-primario-scuro: #990505;
   --colore-sfondo: #f5f2e9;
   --colore-testo: #202923;
-  --font-testo: Arial, Helvetica, sans-serif;
-  --font-titoli: Georgia, "Times New Roman", serif;
+  --font-testo: "Atkinson Hyperlegible Next", Arial, Helvetica, sans-serif;
+  --font-titoli: "Unbounded", "Arial Black", Arial, sans-serif;
 }
 
 * {
@@ -45,12 +62,13 @@ a:focus-visible {
 
 .site-header {
   padding: 1.25rem 0;
-  border-bottom: 4px solid #d8d2c5;
+  border-bottom: 4px solid var(--colore-primario);
 }
 
 .brand {
   display: inline-block;
   color: var(--colore-testo);
+  font-family: var(--font-titoli);
   font-size: 1.75rem;
   font-weight: bold;
   line-height: 1.2;
@@ -60,7 +78,8 @@ a:focus-visible {
 .brand span {
   display: block;
   margin-top: 0.25rem;
-  font-size: 0.875rem;
+  font-family: var(--font-testo);
+  font-size: 1rem;
   font-weight: normal;
 }
 
@@ -79,7 +98,7 @@ nav a[aria-current="page"] {
 }
 
 .intro {
-  padding: 3rem 0 1rem;
+  padding: 0.5rem 0 1rem;
 }
 
 .eyebrow,
@@ -156,10 +175,14 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
-/* Qui inseriremo la regola .event-grid durante la demo. */
+.event-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
 
 .event-card {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   overflow: hidden;
   border: 1px solid #b7c0b7;
   border-radius: 0.75rem;
@@ -173,7 +196,7 @@ h3 {
 }
 
 .event-body {
-  padding: 1.25rem;
+  padding: 2rem;
 }
 
 .event-body p:last-child {
@@ -205,4 +228,14 @@ h3 {
   top: 1rem;
 }
 
-/* Qui aggiungeremo la media query durante la demo. */
+@media (min-width: 600px) {
+  .event-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .event-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
