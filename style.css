@@ -208,6 +208,90 @@ h3 {
   font-size: 0.875rem;
 }
 
+.event-body address {
+  margin: 0 0 0.75rem;
+  font-style: normal;
+}
+
+/* Galleria delle sedi (Swiper) */
+.galleria {
+  max-width: 54rem;
+}
+
+.galleria-luoghi {
+  border: 1px solid #b7c0b7;
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.galleria figure {
+  margin: 0;
+}
+
+.galleria img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.galleria figcaption {
+  padding: 1rem;
+}
+
+.galleria figcaption strong,
+.galleria figcaption span,
+.galleria figcaption small {
+  display: block;
+}
+
+.galleria figcaption small {
+  margin-top: 0.5rem;
+  color: #46564b;
+  font-size: 0.875rem;
+}
+
+.galleria-controlli {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.galleria-bottone {
+  padding: 0.75rem 1.25rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--colore-primario);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.galleria-bottone:hover {
+  background: var(--colore-primario-scuro);
+}
+
+.galleria-bottone:focus-visible {
+  outline: 3px solid var(--colore-testo);
+  outline-offset: 4px;
+}
+
+/* Mappa incorporata */
+#mappa-sedi {
+  display: block;
+  width: 100%;
+  max-width: 54rem;
+  height: 24rem;
+  margin-top: 1.5rem;
+  border: 1px solid #b7c0b7;
+  border-radius: 0.75rem;
+}
+
+.mappa-link {
+  margin: 0.75rem 0 1.5rem;
+}
+
 .site-footer {
   padding: 1.25rem 0;
   border-top: 1px solid #b7c0b7;
@@ -226,6 +310,12 @@ h3 {
 
 .skip-link:focus {
   top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galleria-luoghi .swiper-wrapper {
+    transition-duration: 0ms !important;
+  }
 }
 
 @media (min-width: 600px) {
