@@ -1,7 +1,9 @@
 /* Stile iniziale: tipografia, colori e variabili CSS sono già predisposti.
    Lavoreremo su collegamenti, CSS condiviso e disposizione delle schede. */
 
-/* Caratteri ospitati nella cartella del sito (nessun servizio esterno). */
+/* Carattere del testo ospitato nella cartella del sito.
+   Il carattere dei titoli (Instrument Serif) arriva da Google Fonts:
+   il collegamento è nell'head di ogni pagina. */
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
   src: url("assets/fonts/atkinson-hyperlegible-next.woff2") format("woff2");
@@ -10,26 +12,26 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Unbounded";
-  src: url("assets/fonts/unbounded-700.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Scelte comuni: ogni regola usa var() per richiamarne il valore. */
 :root {
-  --colore-primario: #db0707;
-  --colore-primario-scuro: #990505;
+  --colore-primario: #264653;
+  --colore-primario-scuro: #1b3640;
+  /* Solo per elementi grafici: con il testo il contrasto non basta. */
+  --colore-secondario: #2a9d8f;
   --colore-sfondo: #f5f2e9;
   --colore-testo: #202923;
   --font-testo: "Atkinson Hyperlegible Next", Arial, Helvetica, sans-serif;
-  --font-titoli: "Unbounded", "Arial Black", Arial, sans-serif;
+  --font-titoli: "Instrument Serif", Georgia, "Times New Roman", serif;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Spazio per l'intestazione sticky: i salti interni e il focus
+   da tastiera non finiscono nascosti sotto il menu. */
+html {
+  scroll-padding-top: 11rem;
 }
 
 body {
@@ -61,16 +63,29 @@ a:focus-visible {
 }
 
 .site-header {
-  padding: 1.25rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 0.75rem 0;
   border-bottom: 4px solid var(--colore-primario);
+  background: var(--colore-sfondo);
+}
+
+/* Sotto 600 px: nome a sinistra, menu in colonna a destra. */
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .brand {
   display: inline-block;
   color: var(--colore-testo);
   font-family: var(--font-titoli);
-  font-size: 1.75rem;
-  font-weight: bold;
+  font-size: 2.25rem;
+  font-style: italic;
+  font-weight: normal;
   line-height: 1.2;
   text-decoration: none;
 }
@@ -80,16 +95,18 @@ a:focus-visible {
   margin-top: 0.25rem;
   font-family: var(--font-testo);
   font-size: 1rem;
+  font-style: normal;
   font-weight: normal;
 }
 
 nav {
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
 }
 
 nav a {
-  display: inline-block;
-  margin-right: 1rem;
   padding: 0.25rem 0;
 }
 
@@ -108,26 +125,31 @@ nav a[aria-current="page"] {
   font-weight: bold;
 }
 
+.eyebrow {
+  font-size: 1rem;
+}
+
 h1,
 h2,
 h3 {
   font-family: var(--font-titoli);
+  font-weight: normal;
   line-height: 1.2;
 }
 
 h1 {
   max-width: 18ch;
   margin: 0.75rem 0 1.25rem;
-  font-size: 2.5rem;
+  font-size: 3.25rem;
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: 2.25rem;
 }
 
 h3 {
   margin: 0.5rem 0 0.75rem;
-  font-size: 1.375rem;
+  font-size: 1.75rem;
 }
 
 .lead {
@@ -185,6 +207,7 @@ h3 {
   margin-bottom: 0;
   overflow: hidden;
   border: 1px solid #b7c0b7;
+  border-top: 4px solid var(--colore-secondario);
   border-radius: 0.75rem;
   background: #ffffff;
 }
@@ -220,6 +243,7 @@ h3 {
 
 .galleria-luoghi {
   border: 1px solid #b7c0b7;
+  border-top: 4px solid var(--colore-secondario);
   border-radius: 0.75rem;
   background: #ffffff;
 }
@@ -301,6 +325,7 @@ h3 {
 
 .skip-link {
   position: absolute;
+  z-index: 20;
   top: -6rem;
   left: 1rem;
   padding: 0.75rem 1rem;
@@ -319,6 +344,22 @@ h3 {
 }
 
 @media (min-width: 600px) {
+  .site-header {
+    padding: 1.25rem 0;
+  }
+
+  .site-header .container {
+    display: block;
+  }
+
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem 1.25rem;
+    margin-top: 1rem;
+  }
+
   .event-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
