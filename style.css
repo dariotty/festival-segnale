@@ -71,14 +71,6 @@ a:focus-visible {
   background: var(--colore-sfondo);
 }
 
-/* Sotto 600 px: nome a sinistra, menu in colonna a destra. */
-.site-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
 .brand {
   display: inline-block;
   color: var(--colore-testo);
@@ -101,9 +93,9 @@ a:focus-visible {
 
 nav {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 0.5rem;
 }
 
 nav a {
@@ -231,6 +223,61 @@ h3 {
   font-size: 0.875rem;
 }
 
+/* Messaggi del Programma: caricamento, nessun evento, errore. */
+.stato-dati {
+  max-width: 65ch;
+  padding: 1rem 1.25rem;
+  border: 1px solid #b7c0b7;
+  border-left: 4px solid var(--colore-secondario);
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+/* Meteo a Torino adesso */
+.meteo-dati {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  max-width: 54rem;
+  margin: 0;
+}
+
+/* Senza questa regola display: grid scavalcherebbe l'attributo hidden. */
+.meteo-dati[hidden] {
+  display: none;
+}
+
+.meteo-dati div {
+  padding: 1rem 1.25rem;
+  border: 1px solid #b7c0b7;
+  border-top: 4px solid var(--colore-secondario);
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.meteo-dati dt {
+  color: #46564b;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.meteo-dati dd {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-titoli);
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+#meteo-ora {
+  font-family: var(--font-testo);
+  font-size: 1.125rem;
+}
+
+.meteo-fonte {
+  color: #46564b;
+  font-size: 0.875rem;
+}
+
 .event-body address {
   margin: 0 0 0.75rem;
   font-style: normal;
@@ -348,15 +395,7 @@ h3 {
     padding: 1.25rem 0;
   }
 
-  .site-header .container {
-    display: block;
-  }
-
   nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0.5rem 1.25rem;
     margin-top: 1rem;
   }
 

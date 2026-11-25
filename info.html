@@ -105,6 +105,27 @@
       </div>
     </section>
 
+    <section class="content-section" aria-labelledby="titolo-meteo">
+      <h2 id="titolo-meteo">Meteo a Torino adesso</h2>
+      <p class="reading-text">Sono le condizioni di oggi a Torino, non la previsione per i giorni del festival (12 e 13 giugno).</p>
+      <p id="stato-meteo" class="stato-dati" role="status">Caricamento del meteo…</p>
+      <dl id="meteo-dati" class="meteo-dati" hidden>
+        <div>
+          <dt>Temperatura</dt>
+          <dd id="meteo-temperatura"></dd>
+        </div>
+        <div>
+          <dt>Vento</dt>
+          <dd id="meteo-vento"></dd>
+        </div>
+        <div>
+          <dt>Ora del dato</dt>
+          <dd id="meteo-ora"></dd>
+        </div>
+      </dl>
+      <p class="meteo-fonte">Dati meteo: <a href="https://open-meteo.com/">Open-Meteo</a>, licenza <a href="https://creativecommons.org/licenses/by/4.0/deed.it">CC BY 4.0</a>.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="titolo-nota">
       <h2 id="titolo-nota">Una nota</h2>
       <p class="reading-text">Festival ed eventi sono inventati per questa esercitazione e non rappresentano un evento reale. Le tre sedi sono luoghi di Torino usati come riferimento.</p>
@@ -132,5 +153,6 @@
       }
     });
   </script>
+  <script src="js/meteo.js"></script>
 </body>
 </html>
